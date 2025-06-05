@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ImagineBG - Background Remover</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="https://img.icons8.com/ios-filled/50/000000/image.png" alt="ImagineBG Logo">
+                <span>ImagineBG</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <button class="btn-sign-in">Sign In</button>
+                <button class="btn-get-started">Get Started</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Background Remover</h1>
+                    <p>Remove backgrounds from your images instantly with AI-powered precision.<br>Upload your image and get professional results in seconds.</p>
+                </div>
+                <div class="upload-section">
+                    <div class="upload-box">
+                        <div class="upload-icon">
+                            <img src="https://img.icons8.com/ios/50/000000/upload--v1.png" alt="Upload Icon">
+                        </div>
+                        <p class="drop-text">Drop your image here</p>
+                        <p class="drop-text" style="font-weight: 400; font-size: small;">or click to browse from your device</p>
+                        <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+                        <button class="btn-choose-image" id="chooseImageBtn">
+                            <img src="https://img.icons8.com/ios/24/000000/image.png" alt="Image Icon"> Choose image
+                        </button>
+                        <p class="supported-formats">Supports PNG, JPG, JPEG, WebP (max 5MB) · Requires Remove.bg API key</p>
+                    </div>
+                </div>
+
+                <div class="image-processing-section" style="display: none;">
+                    <div class="processing-buttons">
+                        <button class="btn-remove-background">Remove Background</button>
+                        <button class="btn-start-over">Start Over</button>
+                    </div>
+                    <div class="image-previews">
+                        <div class="original-image-preview">
+                            <h3>Original</h3>
+                            <div class="image-container">
+                                <img id="originalImage" src="" alt="Original Image" style="display: none;">
+                                <p class="placeholder-text">Original image will appear here</p>
+                            </div>
+                        </div>
+                        <div class="removed-background-image-preview">
+                            <h3>Background Removed</h3>
+                            <div class="image-container">
+                                <img id="removedImage" src="" alt="Background Removed Image" style="display: none;">
+                                <p class="placeholder-text">Processed image will appear here</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+        <section class="features-grid">
+            <div class="container">
+                <div class="feature-item">
+                    <img src="https://img.icons8.com/ios/50/000000/upload--v1.png" alt="Easy Upload Icon">
+                    <h3>Easy Upload</h3>
+                </div>
+                <div class="feature-item">
+                    <img src="https://img.icons8.com/ios/50/000000/artificial-intelligence.png" alt="AI-Powered Icon">
+                    <h3>AI-Powered</h3>
+                </div>
+                <div class="feature-item">
+                    <img src="https://img.icons8.com/ios/50/000000/download--v1.png" alt="Instant Download Icon">
+                    <h3>Instant Download</h3>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
