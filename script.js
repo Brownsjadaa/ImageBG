@@ -8,6 +8,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const originalImageContainer = document.querySelector('.original-image-preview .image-container');
     const originalPlaceholderText = originalImageContainer.querySelector('.placeholder-text');
 
+    // Hamburger menu functionality
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.getElementById('nav');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        nav.classList.toggle('active');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!hamburger.contains(e.target) && !nav.contains(e.target)) {
+            hamburger.classList.remove('active');
+            nav.classList.remove('active');
+        }
+    });
+
     chooseImageBtn.addEventListener('click', () => {
         imageUpload.click();
     });
@@ -235,5 +252,34 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             console.error('Download button not found!');
         }
+<<<<<<< HEAD
+=======
+
+        // Create download button
+        const downloadBtn = document.createElement('button');
+        downloadBtn.textContent = 'Download Result';
+        downloadBtn.className = 'btn-download';
+        downloadBtn.style.cssText = `
+            background-color: #000;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        `;
+
+        downloadBtn.addEventListener('click', () => {
+            const link = document.createElement('a');
+            link.download = 'background-removed.png';
+            link.href = imageUrl;
+            link.click();
+        });
+
+        // Add button after the processing buttons
+        const processingButtons = document.querySelector('.processing-buttons');
+        processingButtons.appendChild(downloadBtn);
+>>>>>>> badc390a1daf5cbea88ebf8b03c8c4be034fc5ba
     }
 });
