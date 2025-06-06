@@ -121,15 +121,54 @@ document.addEventListener('DOMContentLoaded', () => {
                 const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
                 const data = imageData.data;
                 
-                // Simple background removal algorithm (removes white/light backgrounds)
+                // Enhanced background removal algorithm
+                // Sample corner pixels to determine background color
+                const corners = [
+                    [0, 0], // top-left
+                    [canvas.width - 1, 0], // top-right
+                    [0, canvas.height - 1], // bottom-left
+                    [canvas.width - 1, canvas.height - 1] // bottom-right
+                ];
+                
+                // Get average background color from corners
+                let bgR = 0, bgG = 0, bgB = 0;
+                let validCorners = 0;
+                
+                corners.forEach(([x, y]) => {
+                    const index = (y * canvas.width + x) * 4;
+                    bgR += data[index];
+                    bgG += data[index + 1];
+                    bgB += data[index + 2];
+                    validCorners++;
+                });
+                
+                bgR = Math.round(bgR / validCorners);
+                bgG = Math.round(bgG / validCorners);
+                bgB = Math.round(bgB / validCorners);
+                
+                // Remove background pixels with tolerance
+                const tolerance = 50; // Adjust this value for sensitivity
+                
                 for (let i = 0; i < data.length; i += 4) {
                     const r = data[i];
                     const g = data[i + 1];
                     const b = data[i + 2];
                     
-                    // If pixel is close to white/light gray, make it transparent
-                    if (r > 200 && g > 200 && b > 200) {
+                    // Calculate color distance from background
+                    const distance = Math.sqrt(
+                        Math.pow(r - bgR, 2) + 
+                        Math.pow(g - bgG, 2) + 
+                        Math.pow(b - bgB, 2)
+                    );
+                    
+                    // If pixel is similar to background color, make it transparent
+                    if (distance < tolerance) {
                         data[i + 3] = 0; // Set alpha to 0 (transparent)
+                    }
+                    // Apply edge smoothing for pixels close to the threshold
+                    else if (distance < tolerance + 20) {
+                        const alpha = Math.min(255, (distance - tolerance) * 12.75);
+                        data[i + 3] = alpha;
                     }
                 }
                 
