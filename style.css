@@ -15,6 +15,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 20px 0;
+    position: relative;
 }
 
 header {
@@ -59,6 +60,12 @@ header {
 
 .hamburger.active span:nth-child(3) {
     transform: rotate(45deg) translate(-5px, -6px);
+}
+
+nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 nav ul {
@@ -345,6 +352,7 @@ nav ul li a {
         border-top: 1px solid #eee;
         display: none;
         z-index: 1000;
+        transform: none;
     }
 
     nav.active {
