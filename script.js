@@ -111,6 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const img = new Image();
 
             img.onload = () => {
+                console.log('Image loaded, starting processing...');
                 canvas.width = img.width;
                 canvas.height = img.height;
                 
@@ -156,8 +157,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     // Calculate color distance from background
                     const distance = Math.sqrt(
-                        Math.pow(r - bgR, 2) + 
-                        Math.pow(g - bgG, 2) + 
+                        Math.pow(r - bgR, 2) +
+                        Math.pow(g - bgG, 2) +
                         Math.pow(b - bgB, 2)
                     );
                     
@@ -186,10 +187,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Add download functionality
                 addDownloadButton(processedImageUrl);
                 
+                console.log('Image processing complete, resolving promise.');
                 resolve();
             };
 
             img.onerror = () => {
+                console.error('Image failed to load.');
                 reject(new Error('Failed to load image'));
             };
 
@@ -198,36 +201,39 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function addDownloadButton(imageUrl) {
-        // Remove existing download button if any
-        const existingBtn = document.querySelector('.btn-download');
-        if (existingBtn) {
-            existingBtn.remove();
+        const downloadButton = document.getElementById('downloadButton');
+        console.log('Download button element:', downloadButton);
+        console.log('Image URL for download:', imageUrl);
+        if (downloadButton) {
+            if (imageUrl && imageUrl.startsWith('data:image/png;base64,')) {
+                // Convert base64 to Blob
+                const byteString = atob(imageUrl.split(',')[1]);
+                const mimeString = imageUrl.split(',')[0].split(':')[1].split(';')[0];
+                const ab = new ArrayBuffer(byteString.length);
+                const ia = new Uint8Array(ab);
+                for (let i = 0; i < byteString.length; i++) {
+                    ia[i] = byteString.charCodeAt(i);
+                }
+                const blob = new Blob([ab], { type: mimeString });
+
+                // Create object URL for download
+                const objectUrl = URL.createObjectURL(blob);
+
+                downloadButton.href = objectUrl;
+                downloadButton.download = 'removed_background_image.png';
+                downloadButton.style.display = 'inline-block'; // Use inline-block to ensure it's visible and takes up space
+                downloadButton.classList.add('btn-download-image'); // Add the new class
+
+                // Revoke the object URL after a short delay to free up memory
+                setTimeout(() => URL.revokeObjectURL(objectUrl), 100);
+
+
+
+            } else {
+                console.error('Invalid image URL for download:', imageUrl);
+            }
+        } else {
+            console.error('Download button not found!');
         }
-
-        // Create download button
-        const downloadBtn = document.createElement('button');
-        downloadBtn.textContent = 'Download Result';
-        downloadBtn.className = 'btn-download';
-        downloadBtn.style.cssText = `
-            background-color: #007bff;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-top: 10px;
-        `;
-
-        downloadBtn.addEventListener('click', () => {
-            const link = document.createElement('a');
-            link.download = 'background-removed.png';
-            link.href = imageUrl;
-            link.click();
-        });
-
-        // Add button after the processing buttons
-        const processingButtons = document.querySelector('.processing-buttons');
-        processingButtons.appendChild(downloadBtn);
     }
 });

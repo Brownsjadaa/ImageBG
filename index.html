@@ -15,9 +15,9 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Features</a></li>
-                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
                     <li><a href="#">About</a></li>
                 </ul>
             </nav>
@@ -29,7 +29,7 @@
     </header>
 
     <main>
-        <section class="hero">
+        <section id="hero" class="hero">
             <div class="container">
                 <div class="hero-content">
                     <h1>Background Remover</h1>
@@ -41,7 +41,7 @@
                             <img src="https://img.icons8.com/ios/50/000000/upload--v1.png" alt="Upload Icon">
                         </div>
                         <p class="drop-text">Drop your image here</p>
-                        <p class="drop-text" style="font-weight: 400; font-size: small;">or click to browse from your device</p>
+                        <p class="drop-text" style="font-weight: 400; font-size: small3;">or click to browse from your device</p>
                         <input type="file" id="imageUpload" accept="image/*" style="display: none;">
                         <button class="btn-choose-image" id="chooseImageBtn">
                             <img src="https://img.icons8.com/ios/24/000000/image.png" alt="Image Icon"> Choose image
@@ -54,6 +54,7 @@
                     <div class="processing-buttons">
                         <button class="btn-remove-background">Remove Background</button>
                         <button class="btn-start-over">Start Over</button>
+                        <button class="btn-download-image" id="downloadButton" style="display: none;">Download Image</button>
                     </div>
                     <div class="image-previews">
                         <div class="original-image-preview">
@@ -77,19 +78,61 @@
             </div>
         </section>
 
-        <section class="features-grid">
+        <section id="features" class="features-grid">
             <div class="container">
+                <h2>Our Features</h2>
                 <div class="feature-item">
                     <img src="https://img.icons8.com/ios/50/000000/upload--v1.png" alt="Easy Upload Icon">
                     <h3>Easy Upload</h3>
+                    <p>Upload your images with a simple drag-and-drop or click.</p>
                 </div>
                 <div class="feature-item">
                     <img src="https://img.icons8.com/ios/50/000000/artificial-intelligence.png" alt="AI-Powered Icon">
                     <h3>AI-Powered</h3>
+                    <p>Leverage advanced AI for precise and accurate background removal.</p>
                 </div>
                 <div class="feature-item">
                     <img src="https://img.icons8.com/ios/50/000000/download--v1.png" alt="Instant Download Icon">
                     <h3>Instant Download</h3>
+                    <p>Get your processed images ready for download in seconds.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="pricing-section">
+            <div class="container">
+                <h2>Pricing Plans</h2>
+                <div class="pricing-cards">
+                    <div class="pricing-card">
+                        <h3>Free</h3>
+                        <p class="price">$0<span>/month</span></p>
+                        <ul>
+                            <li>5 Image Credits</li>
+                            <li>Standard Quality</li>
+                            <li>Basic Support</li>
+                        </ul>
+                        <button class="btn-get-started">Get Started</button>
+                    </div>
+                    <div class="pricing-card featured">
+                        <h3>Pro</h3>
+                        <p class="price">$9<span>/month</span></p>
+                        <ul>
+                            <li>Unlimited Image Credits</li>
+                            <li>High Quality</li>
+                            <li>Priority Support</li>
+                        </ul>
+                        <button class="btn-get-started">Choose Plan</button>
+                    </div>
+                    <div class="pricing-card">
+                        <h3>Enterprise</h3>
+                        <p class="price">Custom</p>
+                        <ul>
+                            <li>Custom Image Credits</li>
+                            <li>Highest Quality</li>
+                            <li>Dedicated Support</li>
+                        </ul>
+                        <button class="btn-get-started">Contact Us</button>
+                    </div>
                 </div>
             </div>
         </section>
