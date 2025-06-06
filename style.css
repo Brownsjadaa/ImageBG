@@ -3,8 +3,7 @@
 body {
     font-family: 'Poppins', 'Hind', sans-serif;
     margin: 0;
-    background-color: #000;
-    color: #fff;
+    background-color: #f8f8f8;
 }
 
 .container {
@@ -18,8 +17,8 @@ body {
 }
 
 header {
-    background-color: #000;
-    border-bottom: 1px solid #333;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
 }
 
 .logo {
@@ -44,7 +43,7 @@ header {
 .hamburger span {
     width: 25px;
     height: 3px;
-    background-color: #fff;
+    background-color: #333;
     margin: 3px 0;
     transition: 0.3s;
 }
@@ -74,7 +73,7 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: #fff;
+    color: #333;
     font-weight: bold;
 }
 
@@ -87,9 +86,9 @@ nav ul li a {
 }
 
 .btn-sign-in {
-    background-color: transparent;
-    color: #fff;
-    border: 1px solid #fff;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
     margin-right: 10px;
 }
 
@@ -309,7 +308,7 @@ nav ul li a {
     display: flex;
     justify-content: space-around;
     padding: 50px 0;
-    background-color: #111;
+    background-color: #f0f0f0;
 }
 
 .feature-item {
@@ -324,7 +323,7 @@ nav ul li a {
 
 .feature-item h3 {
     font-size: 18px;
-    color: #fff;
+    color: #333;
 }
 
 @media (max-width: 768px) {
@@ -341,8 +340,8 @@ nav ul li a {
         top: 100%;
         left: 0;
         right: 0;
-        background-color: #000;
-        border-top: 1px solid #333;
+        background-color: #fff;
+        border-top: 1px solid #eee;
         display: none;
         z-index: 1000;
     }
@@ -365,7 +364,7 @@ nav ul li a {
     nav ul li a {
         display: block;
         padding: 10px 0;
-        border-bottom: 1px solid #333;
+        border-bottom: 1px solid #eee;
     }
 
     .auth-buttons {
