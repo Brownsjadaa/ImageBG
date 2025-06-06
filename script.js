@@ -8,6 +8,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const originalImageContainer = document.querySelector('.original-image-preview .image-container');
     const originalPlaceholderText = originalImageContainer.querySelector('.placeholder-text');
 
+    // Hamburger menu functionality
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.getElementById('nav');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        nav.classList.toggle('active');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!hamburger.contains(e.target) && !nav.contains(e.target)) {
+            hamburger.classList.remove('active');
+            nav.classList.remove('active');
+        }
+    });
+
     chooseImageBtn.addEventListener('click', () => {
         imageUpload.click();
     });
@@ -209,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
         downloadBtn.textContent = 'Download Result';
         downloadBtn.className = 'btn-download';
         downloadBtn.style.cssText = `
-            background-color: #007bff;
+            background-color: #000;
             color: white;
             padding: 10px 20px;
             border: none;
