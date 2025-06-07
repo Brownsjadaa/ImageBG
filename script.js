@@ -26,11 +26,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     chooseImageBtn.addEventListener('click', () => {
+        console.log('Choose image button clicked. Triggering file input.');
         imageUpload.click();
     });
 
     imageUpload.addEventListener('change', (event) => {
         const file = event.target.files[0];
+
         if (file) {
             const reader = new FileReader();
             reader.onload = (e) => {
@@ -83,9 +85,45 @@ document.addEventListener('DOMContentLoaded', () => {
                     imageProcessingSection.style.display = 'flex';
                 };
                 reader.readAsDataURL(file);
+
+                // Create a DataTransfer object and add the file to it
+                const dataTransfer = new DataTransfer();
+                dataTransfer.items.add(file);
+                imageUpload.files = dataTransfer.files; // Assign the DataTransfer's files to the input
             } else {
                 alert('Please drop an image file.');
             }
+        }
+    });
+
+    // Modals functionality
+    const signupModal = document.getElementById('signupModal');
+    const getStartedModal = document.getElementById('getStartedModal');
+    const btnSignIn = document.querySelector('.btn-sign-in');
+    const btnGetStarted = document.querySelector('.btn-get-started');
+    const closeButtons = document.querySelectorAll('.modal .close-button');
+
+    btnSignIn.addEventListener('click', () => {
+        signupModal.style.display = 'flex';
+    });
+
+    btnGetStarted.addEventListener('click', () => {
+        getStartedModal.style.display = 'flex';
+    });
+
+    closeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            signupModal.style.display = 'none';
+            getStartedModal.style.display = 'none';
+        });
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target == signupModal) {
+            signupModal.style.display = 'none';
+        }
+        if (event.target == getStartedModal) {
+            getStartedModal.style.display = 'none';
         }
     });
 
@@ -252,34 +290,33 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             console.error('Download button not found!');
         }
-<<<<<<< HEAD
-=======
-
         // Create download button
         const downloadBtn = document.createElement('button');
         downloadBtn.textContent = 'Download Result';
         downloadBtn.className = 'btn-download';
         downloadBtn.style.cssText = `
             background-color: #000;
-            color: white;
+            color: #fff;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-weight: bold;
-            margin-top: 10px;
+            font-size: 16px;
+            margin-top: 20px;
         `;
-
         downloadBtn.addEventListener('click', () => {
-            const link = document.createElement('a');
-            link.download = 'background-removed.png';
-            link.href = imageUrl;
-            link.click();
+            const imageUrl = removedImage.src;
+            if (imageUrl) {
+                const link = document.createElement('a');
+                link.href = imageUrl;
+                link.download = 'removed_background_image.png';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } else {
+                alert('No image to download.');
+            }
         });
-
-        // Add button after the processing buttons
-        const processingButtons = document.querySelector('.processing-buttons');
-        processingButtons.appendChild(downloadBtn);
->>>>>>> badc390a1daf5cbea88ebf8b03c8c4be034fc5ba
+        document.querySelector('.image-processing-section').appendChild(downloadBtn);
     }
 });

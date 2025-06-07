@@ -1,6 +1,4 @@
-language = "python"
-entrypoint = "main.py"# requirements.txt
-# Add any necessary packages heremodules = ["python-3.10:v18-20230807-322e88b"]apt-get update && apt-get install -y python3<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -27,11 +25,12 @@ entrypoint = "main.py"# requirements.txt
                     <li><a href="#pricing">Pricing</a></li>
                     <li><a href="#">About</a></li>
                 </ul>
-                <div class="auth-buttons">
-                    <button class="btn-sign-in">Sign In</button>
-                    <button class="btn-get-started">Get Started</button>
-                </div>
-            </nav></div>
+            </nav>
+            <div class="auth-buttons">
+                <button class="btn-sign-in">Sign In</button>
+                <button class="btn-get-started">Get Started</button>
+            </div>
+        </div>
         </div>
     </header>
 
@@ -61,7 +60,7 @@ entrypoint = "main.py"# requirements.txt
                     <div class="processing-buttons">
                         <button class="btn-remove-background">Remove Background</button>
                         <button class="btn-start-over">Start Over</button>
-                        <button class="btn-download-image" id="downloadButton" style="display: none;">Download Image</button>
+
                     </div>
                     <div class="image-previews">
                         <div class="original-image-preview">
@@ -85,65 +84,68 @@ entrypoint = "main.py"# requirements.txt
             </div>
         </section>
 
-        <section id="features" class="features-grid">
+        <section id="features" class="features-section">
             <div class="container">
-                <h2>Our Features</h2>
-                <div class="feature-item">
-                    <img src="https://img.icons8.com/ios/50/000000/upload--v1.png" alt="Easy Upload Icon">
-                    <h3>Easy Upload</h3>
-                    <p>Upload your images with a simple drag-and-drop or click.</p>
-                </div>
-                <div class="feature-item">
-                    <img src="https://img.icons8.com/ios/50/000000/artificial-intelligence.png" alt="AI-Powered Icon">
-                    <h3>AI-Powered</h3>
-                    <p>Leverage advanced AI for precise and accurate background removal.</p>
-                </div>
-                <div class="feature-item">
-                    <img src="https://img.icons8.com/ios/50/000000/download--v1.png" alt="Instant Download Icon">
-                    <h3>Instant Download</h3>
-                    <p>Get your processed images ready for download in seconds.</p>
+                <div class="features-container">
+                    <div class="feature-item">
+                        <img src="https://img.icons8.com/ios/50/000000/upload--v1.png" alt="Easy Upload Icon">
+                        <h3>Easy Upload</h3>
+                        <p>Upload your images with a simple drag-and-drop or click.</p>
+                    </div>
+                    <div class="feature-item">
+                        <img src="https://img.icons8.com/ios/50/000000/artificial-intelligence.png" alt="AI-Powered Icon">
+                        <h3>AI-Powered</h3>
+                        <p>Leverage advanced AI for precise and accurate background removal.</p>
+                    </div>
+                    <div class="feature-item">
+                        <img src="https://img.icons8.com/ios/50/000000/download--v1.png" alt="Instant Download Icon">
+                        <h3>Instant Download</h3>
+                        <p>Get your processed images ready for download in seconds.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="pricing" class="pricing-section">
-            <div class="container">
-                <h2>Pricing Plans</h2>
-                <div class="pricing-cards">
-                    <div class="pricing-card">
-                        <h3>Free</h3>
-                        <p class="price">$0<span>/month</span></p>
-                        <ul>
-                            <li>5 Image Credits</li>
-                            <li>Standard Quality</li>
-                            <li>Basic Support</li>
-                        </ul>
-                        <button class="btn-get-started">Get Started</button>
-                    </div>
-                    <div class="pricing-card featured">
-                        <h3>Pro</h3>
-                        <p class="price">$9<span>/month</span></p>
-                        <ul>
-                            <li>Unlimited Image Credits</li>
-                            <li>High Quality</li>
-                            <li>Priority Support</li>
-                        </ul>
-                        <button class="btn-get-started">Choose Plan</button>
-                    </div>
-                    <div class="pricing-card">
-                        <h3>Enterprise</h3>
-                        <p class="price">Custom</p>
-                        <ul>
-                            <li>Custom Image Credits</li>
-                            <li>Highest Quality</li>
-                            <li>Dedicated Support</li>
-                        </ul>
-                        <button class="btn-get-started">Contact Us</button>
-                    </div>
-                </div>
-            </div>
-        </section>
+       
     </main>
+
+    <!-- Sign Up Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Sign In</h2>
+            <form>
+                <div class="form-group">
+                    <label for="signupEmail">Email:</label>
+                    <input type="email" id="signupEmail" name="signupEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password:</label>
+                    <input type="password" id="signupPassword" name="signupPassword" required>
+                </div>
+                <button type="submit" class="btn-primary">Sign In</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Get Started Modal -->
+    <div id="getStartedModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Get Started</h2>
+            <form>
+                <div class="form-group">
+                    <label for="getStartedName">Name:</label>
+                    <input type="text" id="getStartedName" name="getStartedName" required>
+                </div>
+                <div class="form-group">
+                    <label for="getStartedEmail">Email:</label>
+                    <input type="email" id="getStartedEmail" name="getStartedEmail" required>
+                </div>
+                <button type="submit" class="btn-primary">Start Now</button>
+            </form>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
